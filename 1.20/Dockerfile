@@ -85,12 +85,12 @@ RUN sed -i -f ${NGINX_APP_ROOT}/nginxconf-rhscl.sed ${NGINX_CONF_PATH} && \
     ln -s ${NGINX_LOG_PATH} /var/log/nginx && \
     ln -s /etc/opt/rh/rh-nginx${NGINX_SHORT_VER}/nginx /etc/nginx && \
     ln -s /opt/rh/rh-nginx${NGINX_SHORT_VER}/root/usr/share/nginx /usr/share/nginx && \
-    chown -R 1001:0 ${NGINX_CONF_PATH} && \
-    chown -R 1001:0 ${NGINX_APP_ROOT}/etc && \
-    chown -R 1001:0 ${NGINX_APP_ROOT}/src/nginx-start/  && \
-    chown -R 1001:0 ${NGINX_CONTAINER_SCRIPTS_PATH}/nginx-start && \
-    chown -R 1001:0 /var/opt/rh/rh-nginx${NGINX_SHORT_VER} && \
-    chown -R 1001:0 /run && \
+    chown -R 10001:0 ${NGINX_CONF_PATH} && \
+    chown -R 10001:0 ${NGINX_APP_ROOT}/etc && \
+    chown -R 10001:0 ${NGINX_APP_ROOT}/src/nginx-start/  && \
+    chown -R 10001:0 ${NGINX_CONTAINER_SCRIPTS_PATH}/nginx-start && \
+    chown -R 10001:0 /var/opt/rh/rh-nginx${NGINX_SHORT_VER} && \
+    chown -R 10001:0 /run && \
     chmod -R ug+rwX /run && \
     chmod -R ug+rwX /var/opt/rh/rh-nginx${NGINX_SHORT_VER} && \
     chmod    ug+rw  ${NGINX_CONF_PATH} && \
@@ -99,7 +99,7 @@ RUN sed -i -f ${NGINX_APP_ROOT}/nginxconf-rhscl.sed ${NGINX_CONF_PATH} && \
     chmod -R ug+rwX ${NGINX_CONTAINER_SCRIPTS_PATH}/nginx-start && \
     rpm-file-permissions
 
-USER 1001
+USER 10001
 
 # Not using VOLUME statement since it's not working in OpenShift Online:
 # https://github.com/sclorg/httpd-container/issues/30
